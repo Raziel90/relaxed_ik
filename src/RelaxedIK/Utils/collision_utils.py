@@ -90,6 +90,9 @@ class Collision_Object_Container:
 
         # positions = frames[0]
         # rotations = frames[1]
+        base_frame = (0.145, 0., 1.656)
+        base_quat = (0.5, 0.5, 0.5, 0.5)
+        orient = T.quaternion_matrix(base_quat)
         positions = []
         rotations = []
         for f in all_frames:
@@ -103,8 +106,10 @@ class Collision_Object_Container:
                 name_arr = name.split('_')
                 arm_id = int(name_arr[1])
                 link_id = int(name_arr[2])
-                ptA = all_frames[arm_id][0][link_id]
-                ptB = all_frames[arm_id][0][link_id+1]
+                ptA = all_frames[arm_id][0][link_id]   
+                ptB = all_frames[arm_id][0][link_id+1] 
+                ptA = np.matmul(orient[0:3,0:3], ptA) + base_frame
+                ptB = np.matmul(orient[0:3,0:3], ptB) + base_frame
                 midPt = ptA + 0.5 * (ptB - ptA)
                 final_pos = midPt
 
@@ -331,8 +336,8 @@ class Collision_Mesh(Collision_Object):
         if not len(self.params) == 2:
             raise TypeError(bc.FAIL + 'ERROR: parameters for collision mesh must be a dictionary consisting of a list of verts and tris.' + bc.ENDC)
 
-        if not len(self.params['verts']) == len(self.params['tris']):
-            raise TypeError(bc.FAIL + 'ERROR: number of tris must equal the number of verts in collision mesh.' + bc.ENDC)
+        # if not len(self.params['verts']) == len(self.params['tris']):
+        #     raise TypeError(bc.FAIL + 'ERROR: number of tris must equal the number of verts in collision mesh.' + bc.ENDC)
 
         self.verts = np.array(self.params['verts'])
         self.tris = np.array(self.params['tris'])
