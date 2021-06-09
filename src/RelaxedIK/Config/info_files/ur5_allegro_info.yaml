@@ -1,0 +1,17 @@
+urdf_file_name: "ur5_allegro.urdf"
+fixed_frame: "world"
+joint_names: [ [ "shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint", "wrist_3_passive_joint", "tool_mount", "mount_mid", "mount_allegro", "root_to_base" ] ]
+joint_ordering: [ "shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint" ]
+ee_fixed_joints: [ "mount_allegro" ]
+starting_config: [ -0.992763060625, -1.28332624663, 1.79503078303, 4.20075986269, -1.57093667036, -0.202613031201 ]
+collision_file_name: "bimanual_computers.yaml"
+collision_nn_file: "ur5_allegro_nn"
+path_to_src: "/home/ccoppola/ros_ws/catkin_ws/src/relaxed_ik/src"
+axis_types: [ [ "z", "z", "z", "z", "z", "z" ] ]
+velocity_limits: [ 3.15, 3.15, 3.15, 3.2, 3.2, 3.2 ]
+joint_limits: [ [-6.28318530718,6.28318530718], [-6.28318530718,6.28318530718], [-3.14159265359,3.14159265359], [-6.28318530718,6.28318530718], [-6.28318530718,6.28318530718], [-6.28318530718,6.28318530718] ]
+displacements: [ [ [0.0,0.0,0.0], [-0.425,0.0,0.0], [-0.39225,0.0,0.10915], [0.0,-0.09465,-1.9413039509e-11], [0.0,0.0823,-1.68800121668e-11], [0.0,0.0,0.0], [0.0025,0.0,0.0], [0.0,0.0,0.04], [0.006,-0.006,0.0375], [0.0,0.0,0.095], [0.006,-0.006,0.0375] ] ]
+disp_offsets: [ [0.0,0.0,0.089159] ]
+rot_offsets: [ [ [0.0,0.0,3.14159265359], [1.570796327,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0], [1.570796327,0.0,0.0], [1.57079632659,3.14159265359,3.14159265359], [0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,-0.79], [0,0,0], [0.0,0.0,-0.79] ] ]
+joint_types: [ [ "revolute", "revolute", "revolute", "revolute", "revolute", "revolute", "fixed", "fixed", "fixed", "fixed", "fixed" ] ]
+joint_state_define_func_file: "ur5_allegro_joint_state_define" 
